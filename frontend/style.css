@@ -151,7 +151,7 @@ body {
   margin: 0;
   letter-spacing: -0.05rem;
   opacity: 0;
-  color: #333333;
+  color: white;
   transform: translateY(30px);
   background-color: #667FEA;
   animation: fadeInUp 0.8s forwards;
@@ -162,7 +162,7 @@ body {
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 800;
   margin: 0.5rem 0;
-  color: #333333;
+  color: white;
   opacity: 0;
   transform: translateY(30px);
   animation: fadeInUp 0.8s 0.2s forwards;
@@ -193,9 +193,9 @@ body {
 }
 
 .description__text {
+  margin: 5vh;
   font-size: 1.1rem;
   line-height: 1.8;
-  margin-bottom: 1rem;
   text-align: left;
   color: black;
 }
