@@ -183,6 +183,29 @@ body {
   animation: fadeInUp 0.8s 0.4s forwards;
 }
 
+.hero__title-main_service{
+  font-size: clamp(3rem, 10vw, 5rem);
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.05rem;
+  opacity: 0;
+  color: #494949;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s forwards;
+}
+
+.heroMail{
+  padding-bottom: 10vh;
+  font-size: clamp(1rem, 5vw, 3rem);
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.05rem;
+  opacity: 0;
+  color: #494949;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s forwards;
+}
+
 .section-title {
   font-size: 2.5rem;
   font-weight: 700;
@@ -201,8 +224,7 @@ body {
 }
 
 .artifacts {
-
-  background: rgba(44, 62, 80, 0.1);
+  background: rgba(44, 62, 80, 0.01);
   padding: 5rem 0;
 }
 
@@ -277,6 +299,8 @@ body {
 
 /* Footer Styles */
 .footer {
+  position: relative;
+  bottom: 0;
   background-color: rgba(42, 29, 55, 0.9);
   color: var(--white);
   padding: 4rem 0 2rem;
@@ -1176,4 +1200,66 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/*.pdf-export {*/
+/*  text-align: center;*/
+/*  margin: 30px 0;*/
+/*}*/
+
+/*.pdf-btn {*/
+/*  background-color: #4CAF50;*/
+/*  color: white;*/
+/*  border: none;*/
+/*  padding: 12px 24px;*/
+/*  font-size: 16px;*/
+/*  border-radius: 6px;*/
+/*  cursor: pointer;*/
+/*  transition: background-color 0.3s;*/
+/*}*/
+
+/*.pdf-btn:hover {*/
+/*  background-color: #45a049;*/
+/*}*/
+
+/*.pdf-btn:disabled {*/
+/*  background-color: #cccccc;*/
+/*  cursor: not-allowed;*/
+/*}*/
+
+.pdf-export {
+  text-align: center;
+  margin: 3rem auto;
+  max-width: 800px;
+}
+
+.pdf-btn {
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(39, 174, 96, 0.25);
+  outline: none;
+}
+
+.pdf-btn:hover {
+  background-color: #219a52;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(39, 174, 96, 0.35);
+}
+
+.pdf-btn:active {
+  transform: translateY(0);
+}
+
+.pdf-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }

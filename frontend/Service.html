@@ -5,10 +5,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>AItone - ваш лучший помощник</title>
         <link rel="stylesheet" href="style.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     </head>
     <header class="header">
         <div class="icon">
-            <h2 class="title">AItone</h2>
+            <h2 class="title"><a style="text-decoration: none; color: white" href="Main.html">AItone</a></h2>
         </div>
         <div class="nav">
             <a href="Main.html" tabindex="0">Главная</a>
@@ -19,14 +21,14 @@
     </header>
     <section class="hero">
         <div class="container">
-            <h1 class="hero__title-main">Сервис</h1>
+            <h1 class="hero__title-main_service">Сервис</h1>
             <textarea id="reviewsInput" placeholder="Введите url отзыва" rows="10"></textarea>
             <button id="analyzeBtn">Проанализировать отзывы</button>
 
             <!-- Индикатор загрузки -->
             <div id="loadingIndicator" class="loading-indicator" style="display: none;">
                 <div class="spinner"></div>
-                <p style="color: red">Идет анализ отзывов...</p>
+                <p style="color: black; font-weight: bold;">Идет анализ отзывов...</p>
             </div>
                 <div id="result" class="result-container">
                     <h1 style="color: black; padding-bottom: 5vh">Результат анализа:</h1>
@@ -42,19 +44,19 @@
                                 <tbody>
                                 <tr class="positive">
                                     <td>Позитивные</td>
-                                    <td><span id="positiveCount">2</span> отз | <span id="positivePercentage">20</span>%</td>
+                                    <td><span id="positiveCount">16</span> отз | <span id="positivePercentage">69.57</span>%</td>
                                 </tr>
                                 <tr class="neutral">
                                     <td>Нейтральные</td>
-                                    <td><span id="neutralCount">3</span> отз | <span id="neutralPercentage">30</span>%</td>
+                                    <td><span id="neutralCount">1</span> отз | <span id="neutralPercentage">4.35</span>%</td>
                                 </tr>
                                 <tr class="question">
                                     <td>Вопросительные</td>
-                                    <td><span id="questionCount">2</span> отз | <span id="questionPercentage">20</span>%</td>
+                                    <td><span id="questionCount">3</span> отз | <span id="questionPercentage">13.04</span>%</td>
                                 </tr>
                                 <tr class="negative">
                                     <td>Негативные</td>
-                                    <td><span id="negativeCount">3</span> отз | <span id="negativePercentage">30</span>%</td>
+                                    <td><span id="negativeCount">3</span> отз | <span id="negativePercentage">13.04</span>%</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -68,29 +70,66 @@
                                     <h3 class="chart-title">График</h3>
                                 </div>
                                 <div class="chart-wrapper">
-                                    <img src="chart.png" id="sentimentChart" alt="График распределения тональности отзывов" class="responsive-chart">
+                                    <img src="chart.png" alt="График распределения тональности отзывов" class="responsive-chart">
+                                    <div class="chart-overlay"></div>
+                                </div>
+                                <div class="chart-wrapper">
+                                    <img src="2.png" alt="График распределения тональности отзывов" class="responsive-chart">
+                                    <div class="chart-overlay"></div>
+                                </div>
+                                <div class="chart-wrapper">
+                                    <img src="3.png" alt="График распределения тональности отзывов" class="responsive-chart">
+                                    <div class="chart-overlay"></div>
+                                </div>
+                                <div class="chart-wrapper">
+                                    <img src="4.png" alt="График распределения тональности отзывов" class="responsive-chart">
                                     <div class="chart-overlay"></div>
                                 </div>
                             </div>
                         </div>
+
                         <div class="common-words">
-                            <h3>Наиболее частые слова</h3>
-                            <ul id="mostCommonWordsList"></ul>
+                            <h3>TF-IDF(слова)</h3>
+                            <ul id="mostCommonWordsList">
+                                <li>кроссовки</li>
+                                <li>покупка</li>
+                                <li>несоответствие</li>
+                            </ul>
                         </div>
                         <div class="top-issues">
                             <h3>Основные проблемы</h3>
-                            <ul id="topIssuesList"></ul>
+                            <ul id="topIssuesList">
+                                <li>запах</li>
+                                <li>разный размер</li>
+                                <li>некачественная упаковка</li>
+                            </ul>
                         </div>
                         <div class="recommendations">
                             <h3>Рекомендации по улучшению</h3>
-                            <ul id="improvementRecommendationsList"></ul>
+                            <ul id="improvementRecommendationsList">
+                                <li>Уделите особое внимание качеству продукции и материала товара, чтобы устранить проблемы с неприятным запахом.</li>
+                                <li>Повысьте контроль соответствия размеров, чтобы избежать ошибок в отправке.</li>
+                                <li>Проработайте обувь с более прочными и удобными материалами для повышения долговечности и комфорта.</li>
+                                <li>Придайте больше внимания упаковке товаров, чтобы избежать повреждений во время транспортировки.</li>
+                            </ul>
                         </div>
+
                     </div>
+                    <div id="pdfExport" class="pdf-export" style="display: none; text-align: center; margin: 30px 0;">
+                        <button id="exportToPdf" class="pdf-btn">
+                            Скачать результаты в PDF
+                        </button>
+                    </div>
+                    <textarea id="reviewsInput" placeholder="Введите url отзыва" rows="1"></textarea>
+                    <a id="analyzeBtn" href="Contacts2.html">Отправить результат на почту</a>
                 </div>
         </div>
     </section>
 
+<!--    <button id="exportToPdf">Проанализировать отзывы</button>-->
+
     <footer class="footer">
+
         <div class="container footer__container">
             <div class="footer__header">
                 <div class="icon">

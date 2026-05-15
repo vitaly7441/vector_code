@@ -4,7 +4,7 @@
 # import pandas as pd
 # from scipy.interpolate import make_interp_spline
 #
-# plt.rcParams["font.family"] = "sans-serif"
+# plt.rcParams["font.family"] = generate_sentiment_chart"sans-serif"
 # plt.rcParams["axes.unicode_minus"] = False
 #
 #
@@ -192,13 +192,14 @@
 import json
 import matplotlib.pyplot as plt
 import numpy as np
+import base64
+import io
 import pandas as pd
 from scipy.interpolate import make_interp_spline
-import io
-import base64
 
-plt.rcParams["font.family"] = "sans-serif"
+plt.rcParams["font.family"] = generate_sentiment_chart"sans-serif"
 plt.rcParams["axes.unicode_minus"] = False
+
 
 def generate_sentiment_chart(json_data):
     try:
@@ -338,21 +339,61 @@ def generate_sentiment_chart(json_data):
         )
 
         plt.tight_layout()
+        plt.savefig(
+            "sentiment_chart_glow.png", dpi=300, bbox_inches="tight", facecolor="white"
+        )
+        plt.show()
+        plt.tight_layout()
 
-        # Сохраняем график в буфер памяти в формате PNG
-        buffer = io.BytesIO()
-        plt.savefig(buffer, format='png', dpi=300, bbox_inches='tight', facecolor='white')
-        buffer.seek(0)
-        image_png = buffer.getvalue()
-        buffer.close()
 
-        # Кодируем в base64
-        graphic_base64 = base64.b64encode(image_png).decode('utf-8')
+                # Сохраняем график в буфер памяти в формате PNG
+                img_buffer = io.BytesIO()
+                plt.savefig(
+                    img_buffer,
+                    format='png',
+                    dpi=300,
+                    bbox_inches='tight',
+                    facecolor='white'
+                )
+                img_buffer.seek(0)
 
-        plt.close(fig)
+                # Кодируем в Base64
+                img_base64 = base64.b64encode(img_buffer.getvalue()).decode('utf-8')
+                plt.close()
 
-        return graphic_base64
+                return img_base64
 
     except Exception as e:
-        print(f"Ошибка при обработке JSON: {e}")
-        return None
+            print(f"Ошибка при обработке JSON: {e}")
+            return None
+
+
+if __name__ == "__main__":
+    raw_data = []
+    months = [
+        "2026-01-01",
+        "2026-02-01",
+        "2026-03-01",
+        "2026-04-01",
+        "2026-05-01",
+        "2026-06-01",
+        "2026-07-01",
+        "2026-08-01",
+        "2026-09-01",
+        "2026-10-01",
+        "2026-11-01",
+        "2026-12-01",
+    ]
+
+    pos_vals = [100, 200, 450, 400, 500, 300, 700, 800, 600, 700, 600, 800]
+    quest_vals = [200, 150, 240, 180, 150, 240, 230, 300, 200, 150, 270, 200]
+    neut_vals = [50, 80, 60, 100, 40, 90, 110, 70, 50, 130, 90, 60]
+    neg_vals = [10, 40, 20, 50, 10, 30, 15, 25, 40, 20, 10, 30]
+
+    for m, p, q, nu, ne in zip(months, pos_vals, quest_vals, neut_vals, neg_vals):
+        raw_data += [{"data": m, "ton": "positive"}] * p
+        raw_data += [{"data": m, "ton": "question"}] * q
+        raw_data += [{"data": m, "ton": "neutral"}] * nu
+        raw_data += [{"data": m, "ton": "negative"}] * ne
+
+    generate_sentiment_chart(json.dumps(raw_data))
