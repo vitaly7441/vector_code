@@ -4,6 +4,16 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 :root {
   --primary: #4a76fd;
   --primary-dark: #3f5fe0;
@@ -1846,92 +1856,92 @@ button.home-btn:focus-visible {
   main:has(.hero--landing) .how-it-works__title,
   main:has(.hero--landing) .tariffs__title {
     animation-name: mainRevealUp;
-    animation-range: entry 0% cover 28%;
+    animation-range: entry 28% cover 56%;
   }
 
   main:has(.hero--landing) .description__text:nth-of-type(1) {
     animation-name: mainRevealUp;
-    animation-range: entry 5% cover 32%;
+    animation-range: entry 33% cover 60%;
   }
 
   main:has(.hero--landing) .description__text:nth-of-type(2) {
     animation-name: mainRevealUp;
-    animation-range: entry 12% cover 38%;
+    animation-range: entry 40% cover 66%;
   }
 
   main:has(.hero--landing) .artifacts__image {
     animation-name: mainRevealRight;
-    animation-range: entry 0% cover 35%;
+    animation-range: entry 28% cover 63%;
   }
 
   main:has(.hero--landing) .artifacts__text {
     animation-name: mainRevealLeft;
-    animation-range: entry 8% cover 38%;
+    animation-range: entry 36% cover 66%;
   }
 
   main:has(.hero--landing) .artifacts__list li:nth-child(1) {
     animation-name: mainRevealUp;
-    animation-range: entry 10% cover 30%;
+    animation-range: entry 38% cover 58%;
   }
 
   main:has(.hero--landing) .artifacts__list li:nth-child(2) {
     animation-name: mainRevealUp;
-    animation-range: entry 14% cover 34%;
+    animation-range: entry 42% cover 62%;
   }
 
   main:has(.hero--landing) .artifacts__list li:nth-child(3) {
     animation-name: mainRevealUp;
-    animation-range: entry 18% cover 38%;
+    animation-range: entry 46% cover 66%;
   }
 
   main:has(.hero--landing) .artifacts__list li:nth-child(4) {
     animation-name: mainRevealUp;
-    animation-range: entry 22% cover 42%;
+    animation-range: entry 50% cover 70%;
   }
 
   main:has(.hero--landing) .artifacts__list li:nth-child(5) {
     animation-name: mainRevealUp;
-    animation-range: entry 26% cover 46%;
+    animation-range: entry 54% cover 74%;
   }
 
   main:has(.hero--landing) .how-it-works__step:nth-child(1) {
     animation-name: mainRevealUp;
-    animation-range: entry 0% cover 30%;
+    animation-range: entry 28% cover 58%;
   }
 
   main:has(.hero--landing) .how-it-works__step:nth-child(2) {
     animation-name: mainRevealUp;
-    animation-range: entry 8% cover 36%;
+    animation-range: entry 36% cover 64%;
   }
 
   main:has(.hero--landing) .how-it-works__step:nth-child(3) {
     animation-name: mainRevealUp;
-    animation-range: entry 16% cover 42%;
+    animation-range: entry 44% cover 70%;
   }
 
   main:has(.hero--landing) .tariffs__card:nth-child(1) {
     animation-name: mainRevealUp;
-    animation-range: entry 0% cover 32%;
+    animation-range: entry 28% cover 60%;
   }
 
   main:has(.hero--landing) .tariffs__card:nth-child(2) {
     animation-name: mainRevealUp;
-    animation-range: entry 6% cover 36%;
+    animation-range: entry 34% cover 64%;
   }
 
   main:has(.hero--landing) .tariffs__card:nth-child(3) {
     animation-name: mainRevealUp;
-    animation-range: entry 12% cover 40%;
+    animation-range: entry 40% cover 68%;
   }
 
   body:has(.hero--landing) .footer__row {
     animation-name: mainRevealUp;
-    animation-range: entry 0% cover 30%;
+    animation-range: entry 28% cover 58%;
   }
 
   body:has(.hero--landing) .footer__text {
     animation-name: mainRevealUp;
-    animation-range: entry 10% cover 35%;
+    animation-range: entry 38% cover 63%;
   }
 
   main:has(.hero--landing) .hero__deco-bubble {
@@ -1940,7 +1950,7 @@ button.home-btn:focus-visible {
     animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1), ease-in-out;
     animation-fill-mode: both, none;
     animation-timeline: view(), auto;
-    animation-range: entry 0% cover 22%, normal;
+    animation-range: entry 23% cover 45%, normal;
   }
 
   main:has(.hero--landing) .hero__deco-bubble--1 {
