@@ -195,7 +195,7 @@ body {
 }
 
 .heroMail{
-  padding-bottom: 10vh;
+  padding-bottom: 3rem;
   font-size: clamp(1rem, 5vw, 3rem);
   font-weight: 800;
   margin: 0;
@@ -204,6 +204,64 @@ body {
   color: #494949;
   transform: translateY(30px);
   animation: fadeInUp 0.8s forwards;
+}
+
+.hero .container--success {
+  align-items: center;
+}
+
+.home-btn {
+  display: inline-block;
+  align-self: center;
+  padding: 1rem 2.5rem;
+  margin: 0 auto 2rem;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: var(--white);
+  text-decoration: none;
+  border: none;
+  border-radius: 14px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.25);
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s 0.25s forwards;
+}
+
+.home-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%, -50%);
+  transform-origin: 50% 50%;
+}
+
+.home-btn:hover {
+  color: var(--white);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(102, 126, 234, 0.35);
+}
+
+.home-btn:active::after {
+  animation: ripple 1s ease-out;
+}
+
+.home-btn:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.25);
 }
 
 .section-title {
@@ -818,7 +876,8 @@ body {
     font-size: 0.95rem;
   }
 
-  #analyzeBtn {
+  #analyzeBtn,
+  .home-btn {
     padding: 0.875rem 2rem;
     font-size: 1rem;
     margin: 0 auto 1.75rem;
@@ -880,7 +939,8 @@ body {
     min-height: 90px;
   }
 
-  #analyzeBtn {
+  #analyzeBtn,
+  .home-btn {
     padding: 0.75rem 1.75rem;
     font-size: 0.95rem;
   }
@@ -1262,4 +1322,54 @@ body {
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
+}
+
+.hero--success {
+  background: white;
+  min-height: calc(100vh - 5rem);
+}
+.hero--success .heroMail {
+  color: black;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.15);
+  padding-bottom: 3rem;
+}
+.return-home-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2.5rem;
+  margin: 0 auto;
+  background: #ffffff;
+  color: #764ba2;
+  border: none;
+  border-radius: 14px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  outline: none;
+  position: relative;
+  overflow: hidden;
+}
+.return-home-btn::after {
+  content: '→';
+  transition: transform 0.3s ease;
+}
+.return-home-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.25);
+  background: #f8f9fa;
+}
+.return-home-btn:hover::after {
+  transform: translateX(4px);
+}
+.return-home-btn:active {
+  transform: translateY(-1px);
+}
+.return-home-btn:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
 }

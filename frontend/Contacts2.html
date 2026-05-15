@@ -6,6 +6,7 @@
         <title>AItone - ваш лучший помощник</title>
         <link rel="stylesheet" href="style.css" />
     </head>
+    <body>
     <header class="header">
         <div class="icon">
             <h2 class="title"><a style="text-decoration: none; color: white" href="Main.html">AItone</a></h2>
@@ -18,11 +19,13 @@
         </div>
     </header>
     <main>
-        <section class="hero" style="color: white">
-            <div class="container">
+        <section class="hero hero--success">
+            <motion class="container">
                 <h1 class="heroMail">Результаты успешно отправлены на почту!</h1>
-                <button idanalyzeBtn="">Вернуться на главную</button>
-            </div>
+                <button type="button" id="returnHomeBtn" class="return-home-btn">
+                    Вернуться на главную
+                </button>
+                </div>
         </section>
     </main>
 <!--    <footer class="footer">-->
@@ -56,4 +59,10 @@
 <!--            </div>-->
 <!--        </div>-->
 <!--    </footer>-->
+    <script>
+        document.getElementById('returnHomeBtn').addEventListener('click', function () {
+            window.location.href = 'Main.html';
+        });
+    </script>
+    </body>
 </html>
