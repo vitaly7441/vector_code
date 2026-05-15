@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>AItone - ваш лучший помощник</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <header class="header">
+        <div class="icon">
+            <h2 class="title">AItone</h2>
+        </div>
+        <div class="nav">
+            <a href="Main.html" tabindex="0">Главная</a>
+            <a href="Service.html" tabindex="0">Сервис</a>
+            <a href="Contacts.html" tabindex="0">Контакты</a>
+            <a class="login_btn">Войти →</a>
+        </div>
+    </header>
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero__title-main">Сервис</h1>
+            <textarea id="reviewsInput" placeholder="Введите url отзыва" rows="10"></textarea>
+            <button id="analyzeBtn">Проанализировать отзывы</button>
+
+            <!-- Индикатор загрузки -->
+            <div id="loadingIndicator" class="loading-indicator" style="display: none;">
+                <div class="spinner"></div>
+                <p style="color: red">Идет анализ отзывов...</p>
+            </div>
+                <div id="result" class="result-container">
+                    <h1 style="color: black; padding-bottom: 5vh">Результат анализа:</h1>
+                    <div id="analysisResult" class="analysis-text">
+<!--                        <div class="tone-stats">-->
+<!--                            <h3>Распределение тональности</h3>-->
+<!--                            <p>Позитивные: <span id="positiveCount"></span> (<span id="positivePercentage"></span>%)</p>-->
+<!--                            <p>Негативные: <span id="negativeCount"></span> (<span id="negativePercentage"></span>%)</p>-->
+<!--                            <p>Нейтральные: <span id="neutralCount"></span> (<span id="neutralPercentage"></span>%)</p>-->
+<!--                            <p>Вопросы: <span id="questionCount"></span> (<span id="questionPercentage"></span>%)</p>-->
+<!--                        </div>-->
+                        <div class="tone-stats-table">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>Категории отзывов</th>
+                                    <th>Количество отзывов (отз, %)</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="positive">
+                                    <td>Позитивные</td>
+                                    <td><span id="positiveCount">2</span> отз | <span id="positivePercentage">20</span>%</td>
+                                </tr>
+                                <tr class="neutral">
+                                    <td>Нейтральные</td>
+                                    <td><span id="neutralCount">3</span> отз | <span id="neutralPercentage">30</span>%</td>
+                                </tr>
+                                <tr class="question">
+                                    <td>Вопросительные</td>
+                                    <td><span id="questionCount">2</span> отз | <span id="questionPercentage">20</span>%</td>
+                                </tr>
+                                <tr class="negative">
+                                    <td>Негативные</td>
+                                    <td><span id="negativeCount">3</span> отз | <span id="negativePercentage">30</span>%</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+<!--                        <div class="chart">-->
+<!--                            <img src="chart.png" id="sentimentChart" alt="График распределения тональности отзывов" class="responsive-chart">-->
+<!--                        </div>-->
+                        <div class="chart">
+                            <div class="chart-container">
+                                <div class="chart-header">
+                                    <h3 class="chart-title">График</h3>
+                                </div>
+                                <div class="chart-wrapper">
+                                    <img src="chart.png" id="sentimentChart" alt="График распределения тональности отзывов" class="responsive-chart">
+                                    <div class="chart-overlay"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="common-words">
+                            <h3>Наиболее частые слова</h3>
+                            <ul id="mostCommonWordsList"></ul>
+                        </div>
+                        <div class="top-issues">
+                            <h3>Основные проблемы</h3>
+                            <ul id="topIssuesList"></ul>
+                        </div>
+                        <div class="recommendations">
+                            <h3>Рекомендации по улучшению</h3>
+                            <ul id="improvementRecommendationsList"></ul>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer__container">
+            <div class="footer__header">
+                <div class="icon">
+                    <h2 class="title">AItone</h2>
+                </div>
+                <nav class="footer__nav">
+                    <ul class="footer__menu">
+                        <li><a href="Main.html">Главная</a></li>
+                        <li><a href="Service.html">Сервис</a></li>
+                        <li><a href="Contacts.html">Контакты</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="footer__copy">
+                <p class="footer__text">vectorai@example.com</p>
+            </div>
+        </div>
+    </footer>
+    <script src="index.js"></script>
+</html>
