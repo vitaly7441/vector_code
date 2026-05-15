@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const resultDivCont = document.getElementById('result');
   const loadingIndicator = document.getElementById('loadingIndicator');
 
-  // Получаем все элементы для заполнения заранее
   const elements = {
     positiveCount: document.getElementById('positiveCount'),
     positivePercentage: document.getElementById('positivePercentage'),
@@ -38,11 +37,8 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       }
 
-      // Показываем индикатор загрузки
       loadingIndicator.style.display = 'block';
-      // resultDiv.innerHTML = '';
 
-      // Отправляем данные на backend
       const response = await fetch('http://localhost:5000/analyze', {
         method: 'POST',
         headers: {
@@ -65,7 +61,6 @@ document.addEventListener('DOMContentLoaded', function() {
         throw new Error('Ошибка на сервере: анализ не выполнен');
       }
 
-      // Парсим вложенный JSON из поля data
       let analysisData;
       try {
         analysisData = JSON.parse(jsonResponse.data);
@@ -75,16 +70,14 @@ document.addEventListener('DOMContentLoaded', function() {
         throw new Error('Неверный формат данных от сервера — не удалось распарсить поле data');
       }
 
-      // Скрываем индикатор загрузки после получения ответа
       loadingIndicator.style.display = 'none';
 
-      // Отображаем результаты
       displayAnalysisResults(analysisData, elements);
 
     } catch (error) {
       console.error('Ошибка при запросе:', error);
       resultDiv.innerHTML = `<p style="color: red;">Произошла ошибка: ${error.message}</p>`;
-      loadingIndicator.style.display = 'none'; // Скрываем индикатор даже в случае ошибки
+      loadingIndicator.style.display = 'none';
     }
   });
 
@@ -92,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
     resultDivCont.style.display = "block";
     console.log('positiveCount элемент:', elements.positiveCount);
     console.log('mostCommonWordsList элемент:', elements.mostCommonWordsList);
-    // Очищаем содержимое списков и текстовых элементов
+
     Object.values(elements).forEach(el => {
       if (el) {
         if (el.tagName === 'UL' || el.tagName === 'OL') {
@@ -110,7 +103,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-    // Заполняем DistributionTone
     if (data.DistributionTone) {
       updateElementText(elements.positiveCount, data.DistributionTone.Positive.count);
       updateElementText(elements.positivePercentage, data.DistributionTone.Positive.percentage.toFixed(1));
@@ -124,13 +116,11 @@ document.addEventListener('DOMContentLoaded', function() {
       console.warn('DistributionTone отсутствует в данных');
     }
 
-    // Заполняем списки
     updateList(elements.mostCommonWordsList, data.MostCommonWords, 'Наиболее частые слова не найдены');
     updateList(elements.topIssuesList, data.TopIssues, 'Основные проблемы не найдены');
     updateList(elements.improvementRecommendationsList, data.ImprovementRecommendations, 'Рекомендации не найдены');
   }
 
-  // Вспомогательная функция для безопасного обновления текста элемента
   function updateElementText(element, text) {
     if (element) {
       element.textContent = text;
@@ -139,7 +129,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // Вспомогательная функция для заполнения списков
   function updateList(listElement, items, emptyMessage = 'Данные отсутствуют') {
     if (listElement) {
       if (items && items.length > 0) {
